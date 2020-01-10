@@ -1,0 +1,41 @@
+From 38184b2c30837280ccad42b54b1a2da7b4c45c7c Mon Sep 17 00:00:00 2001
+From: Chris Leech <cleech@redhat.com>
+Date: Fri, 13 Sep 2013 17:30:01 -0700
+Subject: [PATCH 1/1] use LDFLAGS
+
+---
+ Makefile.in | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 277a80a..dde76f0 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -100,19 +100,19 @@ $(LIB): $(LIBOBJS)
+ 	ar cr $@ $(LIBOBJS)
+ 
+ isnsd: $(SRVOBJS) $(LIB)
+-	$(CC) $(CFLAGS) -o $@ $(SRVOBJS) -L. -lisns $(SECLINK) $(SLPLINK)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SRVOBJS) -L. -lisns $(SECLINK) $(SLPLINK)
+ 
+ isnsdd: $(ISNSDD) $(LIB)
+-	$(CC) $(CFLAGS) -o $@ $(ISNSDD) -L. -lisns $(SECLINK) $(SLPLINK)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(ISNSDD) -L. -lisns $(SECLINK) $(SLPLINK)
+ 
+ isnsadm: $(ADMOBJS) $(LIB)
+-	$(CC) $(CFLAGS) -o $@ $(ADMOBJS) -L. -lisns $(SECLINK) $(SLPLINK)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(ADMOBJS) -L. -lisns $(SECLINK) $(SLPLINK)
+ 
+ tests/%: tests/%.o $(LIB)
+-	$(CC) $(CFLAGS) -o $@ $@.o -L. -lisns $(SECLINK) $(SLPLINK)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $@.o -L. -lisns $(SECLINK) $(SLPLINK)
+ 
+ bitvector: bitvector.c $(LIB)
+-	$(CC) -DTEST $(CFLAGS) -o $@ bitvector.c -L. -lisns
++	$(CC) -DTEST $(CFLAGS) $(LDFLAGS) -o $@ bitvector.c -L. -lisns
+ 
+ depend:
+ 	gcc $(CFLAGS) -M `ls *.c` > .depend
+-- 
+1.8.1.4
+
