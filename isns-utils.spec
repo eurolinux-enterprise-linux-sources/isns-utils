@@ -1,6 +1,6 @@
 Name:           isns-utils
 Version:        0.93
-Release:        5%{?dist}
+Release:        7%{?dist}
 Summary:        The iSNS daemon and utility programs
 
 Group:          System Environment/Daemons
@@ -96,6 +96,12 @@ autoheader
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/isns/*
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 0.93-7
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.93-6
+- Mass rebuild 2013-12-27
+
 * Fri Sep 13 2013 Chris Leech <cleech@redhat.com> - 0.93-5
 - remove unneeded libssl requirement
 
